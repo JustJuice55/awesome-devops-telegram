@@ -1,0 +1,25 @@
+name: Check public Telegram previews
+
+on:
+  push:
+    paths:
+      - README.md
+      - .github/workflows/check-telegram.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Report public preview evidence
+        uses: JustJuice55/telegram-link-checker@d55638e5a0f594cbf3a49a0105f4821cbef8aed7 # v1.0.0
+        with:
+          file: README.md
+          fail-on-contact: 'false'
