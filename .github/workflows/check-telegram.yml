@@ -1,10 +1,6 @@
 name: Check public Telegram previews
 
 on:
-  push:
-    paths:
-      - README.md
-      - .github/workflows/check-telegram.yml
   workflow_dispatch:
 
 permissions:
